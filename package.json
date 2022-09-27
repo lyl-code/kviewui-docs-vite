@@ -1,0 +1,49 @@
+{
+  "name": "kviewui-docs-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite-ssg build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vueuse/head": "^0.7.12",
+    "autoprefix": "^1.0.1",
+    "highlight.js": "^11.6.0",
+    "markdown-it": "^13.0.1",
+    "sass": "^1.55.0",
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.5"
+  },
+  "devDependencies": {
+    "@rollup/pluginutils": "^4.2.1",
+    "@types/fs-extra": "^9.0.13",
+    "@types/markdown-it": "^12.2.3",
+    "@types/node": "^18.7.23",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "@vue/server-renderer": "^3.2.39",
+    "@yankeeinlondon/code-builder": "^1.0.7",
+    "@yankeeinlondon/link-builder": "^1.0.5",
+    "@yankeeinlondon/meta-builder": "^1.0.6",
+    "autoprefixer": "^10.4.12",
+    "browserslist": "^4.21.4",
+    "fp-ts": "^2.12.3",
+    "fs-extra": "^10.1.0",
+    "gray-matter": "^4.0.3",
+    "happy-dom": "^6.0.4",
+    "inferred-types": "^0.22.0",
+    "markdown-it-anchor": "^8.6.5",
+    "markdown-it-prism": "^2.3.0",
+    "postcss": "^8.4.16",
+    "rollup": "^2.79.1",
+    "typescript": "^4.6.4",
+    "unplugin-vue-components": "^0.22.7",
+    "vite": "^3.1.0",
+    "vite-plugin-md": "^0.20.4",
+    "vite-plugin-pages": "^0.26.0",
+    "vite-ssg": "^0.20.2",
+    "vue-tsc": "^0.40.4"
+  }
+}
