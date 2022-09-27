@@ -18,7 +18,7 @@ import autoprefixer from 'autoprefixer';
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, './src')}]
+    alias: [{ find: '@', replacement: resolve(__dirname, './src') }]
   },
   css: {
     preprocessorOptions: {
@@ -56,19 +56,47 @@ export default defineConfig({
         html: true,
         linkify: true,
         typographer: true,
-        highlight: function(str, lang) {
+        highlight: function (str, lang) {
+          // 当前时间加随机数生成唯一的id标识
+          const codeIndex = parseInt(Date.now() + '') + Math.floor(Math.random() * 10000000);
+          console.log(codeIndex);
+          let html = `<button class="copy-btn" type="button" data-clipboard-action="copy" data-clipboard-target="#copy ${codeIndex}">复制</button>`;
+          const linesLength = str.split(/\n/).length - 1;
+          // 生成行号
+          let linesNum = `<span aria-hidden="true" class="line-numbers-rows">`;
+          for (let index = 0; index < linesLength; index++) {
+            linesNum = linesNum + '<span></span>';
+          }
+          linesNum += '</span>';
           if (lang && hljs.getLanguage(lang)) {
             try {
-              return hljs.highlight(lang, str).value;
-            } catch (__) {}
+              // return hljs.highlight(lang, str).value;
+              // 高亮代码
+              const preCode = hljs.highlight(lang, str, true).value;
+              html = html + preCode;
+              if (linesLength) {
+                html += `<b class="name">${lang}</b>`;
+              }
+              // 将代码包裹在 textarea 中
+              return `<pre class="hljs"><code>${html}</code>${linesNum}</pre><textarea style="position: absolute;top: -9999px;z-index: -9999;" id="copy${codeIndex}">${str.replace(/<\/textarea>/g, '&lt;/textarea>')}</textarea>`;
+            } catch (error) {
+              console.log(error);
+            }
           }
 
-          return ''; // 使用额外的默认转义
+          // return ''; // 使用额外的默认转义
+          const preCode = hljs.highlight(lang, str, true).value;
+          html = html + preCode;
+          if (linesLength) {
+            html += `<b class="name">${lang}</b>`;
+          }
+          // 将代码包裹在 textarea 中
+          return `<pre class="hljs"><code>${html}</code>${linesNum}</pre><textarea style="position: absolute;top: -9999px;z-index: -9999;" id="copy${codeIndex}">${str.replace(/<\/textarea>/g, '&lt;/textarea>')}</textarea>`;
         }
       },
       markdownItSetup: (md) => {
         md.use(mia),
-        md.use(mip)
+          md.use(mip)
       }
     }),
     Components({
