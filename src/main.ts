@@ -6,6 +6,8 @@ import '@/assets/styles/style.css';
 // import '@/assets/styles/reset.scss';
 import '@/assets/styles/md-style.scss';
 import App from './App.vue'
+import '@/assets/styles/main.css';
+// import 'uno.css';
 
 // createApp(App).mount('#app')
 // const app = createApp(App);

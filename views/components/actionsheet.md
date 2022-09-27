@@ -24,11 +24,7 @@
                 </kui-cell-group>
             </template>
         </kui-page>
-        <kui-actionsheet 
-            v-model:show="baseState.state.show" 
-            :actions="baseState.state.actions" 
-            @choose="baseState.methods.onChoose">
-        </kui-actionsheet>
+        <kui-actionsheet v-model:show="baseState.state.show" :actions="baseState.state.actions" @choose="baseState.methods.onChoose"></kui-actionsheet>
     </view>
 </template>
 <script lang="ts">
